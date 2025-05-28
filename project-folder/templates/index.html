@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Results</title>
+</head>
+<body>
+    <h1>Similar Name Search</h1>
+
+    <!-- Form to enter search parameters -->
+    <form method="POST">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="dob">DOB: </label>
+        <input type="text" id="dob" name="dob"><br>
+
+        <label for="id">ID: </label>
+        <input type="text" id="id" name="id"><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>Results:</h2>
+    {% if matches %}
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Alias</th>
+                <th>DOB</th>
+                <th>ID</th>
+                <th>Similarity</th>
+                <th>DOB Match</th>
+                <th>ID Match</th>
+            </tr>
+            {% for match in matches %}
+                <tr>
+                    <td>{{ match['NameList'] }}</td>
+                    <td>{{ match['alias_name'] }}</td>
+                    <td>{{ match['DateLst'] }}</td>
+                    <td>{{ match['IDLst'] }}</td>
+                    <td>{{ match['cosine_sim'] }}</td>
+                    <td>{{ match['dob_match'] }}</td>
+                    <td>{{ match['id_match'] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+</body>
+</html>
