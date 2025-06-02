@@ -1,0 +1,11 @@
+Flask
+sentence-transformers
+scikit-learn
+pandas
+numpy
+tqdm
+gunicorn
+faiss-cpu
+rapidfuzz
+unidecode
+openpyxl
